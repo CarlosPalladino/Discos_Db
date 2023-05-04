@@ -8,30 +8,41 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Dominio;
+using Datos;
 
 namespace DiscosDb
 {
     public partial class Form1 : Form
     {
+        private List<Discos> listaDiscos;
         public Form1()
         {
             InitializeComponent();
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+
+
+        private void Form1_Load(object sender, EventArgs e)
         {
-            Metodos metodo = new Metodos(); 
+
+        }
+
+        private void dgvDiscos_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            Metodos metodo = new Metodos();
 
             try
             {
-                dgvDiscos.DataSource = metodo.list
+
+                listaDiscos = metodo.listar();
+                dgvDiscos.DataSource = listaDiscos;
 
             }
             catch (Exception ex)
             {
 
                 throw ex;
-            }
+            }   
         }
     }
 }

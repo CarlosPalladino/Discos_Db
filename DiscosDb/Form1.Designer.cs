@@ -39,7 +39,7 @@
             this.dgvDiscos.Name = "dgvDiscos";
             this.dgvDiscos.Size = new System.Drawing.Size(459, 256);
             this.dgvDiscos.TabIndex = 0;
-            this.dgvDiscos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            this.dgvDiscos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDiscos_CellContentClick);
             // 
             // Form1
             // 
@@ -49,6 +49,7 @@
             this.Controls.Add(this.dgvDiscos);
             this.Name = "Form1";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvDiscos)).EndInit();
             this.ResumeLayout(false);
 
