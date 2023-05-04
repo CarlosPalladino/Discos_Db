@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Dominio;
 
 namespace DiscosDb
 {
@@ -15,6 +16,22 @@ namespace DiscosDb
         public Form1()
         {
             InitializeComponent();
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            Metodos metodo = new Metodos(); 
+
+            try
+            {
+                dgvDiscos.DataSource = metodo.list
+
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
         }
     }
 }
