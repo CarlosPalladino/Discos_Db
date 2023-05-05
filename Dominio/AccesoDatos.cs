@@ -22,8 +22,8 @@ namespace Dominio
         }
         public AccesoDatos()
         {
-            conexion = new SqlConnection("server = .\\SQLEXPRESS; database=DISCOS_DB; intreged security :true");
-
+             conexion = new SqlConnection("server=.\\SQLEXPRESS; database=DISCOS_DB; integrated security=true");
+            comando = new SqlCommand("");
 
         }
         public void SetearConsulta(string consulta)
@@ -37,8 +37,6 @@ namespace Dominio
         public void GenerarLetura()
         {
             comando.Connection = conexion;
-
-
             try
             {
                 conexion.Open();
@@ -49,14 +47,15 @@ namespace Dominio
 
                 throw ex;
             }
-
         }
+
         public void EjecutarAccion()
         {
             comando.Connection = conexion;
             try
             {
                 conexion.Open();
+
                 comando.ExecuteNonQuery();
             }
             catch (Exception)

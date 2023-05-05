@@ -6,12 +6,11 @@ using System.Threading.Tasks;
 
 namespace Datos
 {
-    public class Estilos
+    public class TiposEdicion
     {
         public int Id { get; set; }
 
         public string Descripcion { get; set; }
-
 
         public override string ToString()
         {
@@ -20,3 +19,4 @@ namespace Datos
 
     }
 }
+

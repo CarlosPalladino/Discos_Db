@@ -14,10 +14,11 @@ namespace Dominio
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                datos.SetearConsulta("select Id,Titulo,FechaLanzamiento, CantidadCanciones,UrlImagenTapa, IdEstilo,IdTipoEdicion from Discos D  ,Estilos E ,TipodEdicion T where E.Id= D.IdEstilo, and T.Id = D.TipoEdicion");
+                datos.SetearConsulta("Select D.Titulo,D.FechaLanzamiento,D.CantidadCanciones,D.UrlImagenTapa,D.IdEstilo,D.IdTipoEdicion,D.Id,E.Descripcion Estilos ,T.Descripcion TiposEdicion From Discos D,Estilos E ,TiposEdicion T");
                 datos.GenerarLetura();
 
                 while (datos.Lector.Read())
+
                 {
                     Discos aux = new Discos();
 
@@ -26,6 +27,16 @@ namespace Dominio
                     aux.FechaLanzamiento = (DateTime)datos.Lector["fechaLanzamiento"];
                     aux.CantidadCanciones = (int)datos.Lector["CantidadCanciones"];
                     aux.UrlImagenTapa = (string)datos.Lector["urlImagenTapa"];
+                    aux.IdEstilo = (int)datos.Lector["IdEstilo"];
+                    aux.IdTipoEdicion = (int)datos.Lector["IdTipoEdicion"];
+
+                    aux.Estilo = new Estilos();
+                    aux.Estilo.Id = (int)datos.Lector["Id"];
+                    aux.Estilo.Descripcion = (string)datos.Lector["Estilos"];
+
+                    aux.TiposEdicion = new TiposEdicion();
+                    aux.TiposEdicion.Id = (int)datos.Lector["Id"];
+                    aux.TiposEdicion.Descripcion = (string)datos.Lector["TiposEdicion"];
 
                     lista.Add(aux);
                 }
@@ -36,7 +47,7 @@ namespace Dominio
             catch (Exception ex)
             {
 
-                throw ex; 
+                throw ex;
             }
             finally
             {
@@ -45,6 +56,32 @@ namespace Dominio
 
 
         }
+
+        public void Nuevo()
+        {
+            AccesoDatos datos = new AccesoDatos();
+            Discos dato = new Discos(); 
+            try
+            {
+                datos.SetearConsulta("Insert into Discos(titulo,FechaLanzamiento,CantidadCanciones,UrlImagenTapa,Estilo,TipoEdicion)VALUES(@titulo,@fecha,@cantidad,@imagen,@estilo,@tapa)");
+                datos.SetearParametro("@titulo",dato.titulo);
+                datos.SetearParametro("@fecha",dato.FechaLanzamiento);
+                datos.SetearParametro("@cantidad",dato.CantidadCanciones);
+                datos.SetearParametro("@imagen",dato.UrlImagenTapa);
+                datos.SetearParametro("@estilo",dato);
+                datos.SetearParametro("",dato);
+
+
+            }
+            catch (Exception ex)
+            {
+
+                ex.ToString();
+            }
+        }
+
+
+
 
     }
 }

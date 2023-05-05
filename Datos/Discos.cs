@@ -18,6 +18,6 @@ namespace Datos
 
         public Estilos Estilo { get; set; }
 
-        public TipoEdicion TipoEdicion { get; set; }
+        public TiposEdicion TiposEdicion { get; set; }
     }
 }
