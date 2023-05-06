@@ -29,93 +29,85 @@
         private void InitializeComponent()
         {
             this.Titulo = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.picImg = new System.Windows.Forms.PictureBox();
+            this.txtTitulo = new System.Windows.Forms.TextBox();
+            this.txtCanciones = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.txtImagen = new System.Windows.Forms.TextBox();
             this.lblImagen = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
             this.lblEstilo = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.dataFecha = new System.Windows.Forms.DateTimePicker();
             this.btnAgregar = new System.Windows.Forms.Button();
             this.BtnReset = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.cboEstilos = new System.Windows.Forms.ComboBox();
             this.cboTipoEdicion = new System.Windows.Forms.ComboBox();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picImg)).BeginInit();
             this.SuspendLayout();
             // 
             // Titulo
             // 
             this.Titulo.AutoSize = true;
-            this.Titulo.Location = new System.Drawing.Point(99, 81);
+            this.Titulo.Location = new System.Drawing.Point(7, 81);
             this.Titulo.Name = "Titulo";
             this.Titulo.Size = new System.Drawing.Size(29, 13);
             this.Titulo.TabIndex = 0;
             this.Titulo.Text = "titulo";
             // 
-            // pictureBox1
+            // picImg
             // 
-            this.pictureBox1.BackColor = System.Drawing.Color.CadetBlue;
-            this.pictureBox1.Location = new System.Drawing.Point(405, 81);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(178, 199);
-            this.pictureBox1.TabIndex = 1;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
+            this.picImg.BackColor = System.Drawing.Color.AliceBlue;
+            this.picImg.Location = new System.Drawing.Point(464, 26);
+            this.picImg.Name = "picImg";
+            this.picImg.Size = new System.Drawing.Size(302, 292);
+            this.picImg.TabIndex = 1;
+            this.picImg.TabStop = false;
             // 
-            // textBox1
+            // txtTitulo
             // 
-            this.textBox1.Location = new System.Drawing.Point(191, 78);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(92, 20);
-            this.textBox1.TabIndex = 0;
+            this.txtTitulo.Location = new System.Drawing.Point(99, 78);
+            this.txtTitulo.Name = "txtTitulo";
+            this.txtTitulo.Size = new System.Drawing.Size(92, 20);
+            this.txtTitulo.TabIndex = 0;
             // 
-            // textBox2
+            // txtCanciones
             // 
-            this.textBox2.Location = new System.Drawing.Point(191, 127);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(92, 20);
-            this.textBox2.TabIndex = 1;
+            this.txtCanciones.Location = new System.Drawing.Point(99, 142);
+            this.txtCanciones.Name = "txtCanciones";
+            this.txtCanciones.Size = new System.Drawing.Size(92, 20);
+            this.txtCanciones.TabIndex = 1;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(43, 134);
+            this.label2.Location = new System.Drawing.Point(7, 149);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(85, 13);
             this.label2.TabIndex = 3;
             this.label2.Text = "Cant. Canciones";
             // 
-            // textBox3
+            // txtImagen
             // 
-            this.textBox3.Location = new System.Drawing.Point(191, 166);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(92, 20);
-            this.textBox3.TabIndex = 2;
+            this.txtImagen.Location = new System.Drawing.Point(313, 211);
+            this.txtImagen.Name = "txtImagen";
+            this.txtImagen.Size = new System.Drawing.Size(92, 20);
+            this.txtImagen.TabIndex = 2;
+            this.txtImagen.Leave += new System.EventHandler(this.txtImagen_Leave);
             // 
             // lblImagen
             // 
             this.lblImagen.AutoSize = true;
-            this.lblImagen.Location = new System.Drawing.Point(86, 173);
+            this.lblImagen.Location = new System.Drawing.Point(208, 218);
             this.lblImagen.Name = "lblImagen";
             this.lblImagen.Size = new System.Drawing.Size(42, 13);
             this.lblImagen.TabIndex = 5;
             this.lblImagen.Text = "Imagen";
             // 
-            // textBox4
-            // 
-            this.textBox4.Location = new System.Drawing.Point(0, 0);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(100, 20);
-            this.textBox4.TabIndex = 12;
-            // 
             // lblEstilo
             // 
             this.lblEstilo.AutoSize = true;
-            this.lblEstilo.Location = new System.Drawing.Point(96, 212);
+            this.lblEstilo.Location = new System.Drawing.Point(218, 81);
             this.lblEstilo.Name = "lblEstilo";
             this.lblEstilo.Size = new System.Drawing.Size(32, 13);
             this.lblEstilo.TabIndex = 7;
@@ -124,18 +116,18 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(21, 289);
+            this.label5.Location = new System.Drawing.Point(3, 218);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(117, 13);
+            this.label5.Size = new System.Drawing.Size(70, 13);
             this.label5.TabIndex = 9;
-            this.label5.Text = "Fecha De Lanzamiento";
+            this.label5.Text = " Lanzamiento";
             // 
-            // dateTimePicker1
+            // dataFecha
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(191, 282);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(92, 20);
-            this.dateTimePicker1.TabIndex = 4;
+            this.dataFecha.Location = new System.Drawing.Point(99, 211);
+            this.dataFecha.Name = "dataFecha";
+            this.dataFecha.Size = new System.Drawing.Size(92, 20);
+            this.dataFecha.TabIndex = 4;
             // 
             // btnAgregar
             // 
@@ -159,7 +151,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(65, 242);
+            this.label1.Location = new System.Drawing.Point(218, 149);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(63, 13);
             this.label1.TabIndex = 11;
@@ -168,45 +160,45 @@
             // cboEstilos
             // 
             this.cboEstilos.FormattingEnabled = true;
-            this.cboEstilos.Location = new System.Drawing.Point(191, 204);
+            this.cboEstilos.Location = new System.Drawing.Point(313, 73);
             this.cboEstilos.Name = "cboEstilos";
             this.cboEstilos.Size = new System.Drawing.Size(92, 21);
-            this.cboEstilos.TabIndex = 13;
+            this.cboEstilos.TabIndex = 12;
             // 
             // cboTipoEdicion
             // 
             this.cboTipoEdicion.FormattingEnabled = true;
-            this.cboTipoEdicion.Location = new System.Drawing.Point(191, 239);
+            this.cboTipoEdicion.Location = new System.Drawing.Point(313, 142);
             this.cboTipoEdicion.Name = "cboTipoEdicion";
             this.cboTipoEdicion.Size = new System.Drawing.Size(92, 21);
-            this.cboTipoEdicion.TabIndex = 14;
+            this.cboTipoEdicion.TabIndex = 13;
             // 
             // FrmAltaDiscos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.White;
+            this.BackColor = System.Drawing.SystemColors.WindowFrame;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.cboTipoEdicion);
             this.Controls.Add(this.cboEstilos);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.BtnReset);
             this.Controls.Add(this.btnAgregar);
-            this.Controls.Add(this.dateTimePicker1);
+            this.Controls.Add(this.dataFecha);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.textBox4);
             this.Controls.Add(this.lblEstilo);
-            this.Controls.Add(this.textBox3);
+            this.Controls.Add(this.txtImagen);
             this.Controls.Add(this.lblImagen);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.txtCanciones);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.txtTitulo);
+            this.Controls.Add(this.picImg);
             this.Controls.Add(this.Titulo);
             this.Name = "FrmAltaDiscos";
             this.Text = "FrmAltaDiscos";
             this.Load += new System.EventHandler(this.FrmAltaDiscos_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picImg)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -215,16 +207,15 @@
         #endregion
 
         private System.Windows.Forms.Label Titulo;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.PictureBox picImg;
+        private System.Windows.Forms.TextBox txtTitulo;
+        private System.Windows.Forms.TextBox txtCanciones;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox txtImagen;
         private System.Windows.Forms.Label lblImagen;
-        private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.Label lblEstilo;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker dataFecha;
         private System.Windows.Forms.Button btnAgregar;
         private System.Windows.Forms.Button BtnReset;
         private System.Windows.Forms.Label label1;

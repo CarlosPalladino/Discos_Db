@@ -57,20 +57,20 @@ namespace Dominio
 
         }
 
-        public void Nuevo()
+        public void Nuevo(Discos nuevo)
         {
             AccesoDatos datos = new AccesoDatos();
-            Discos dato = new Discos(); 
             try
             {
-                datos.SetearConsulta("Insert into Discos(titulo,FechaLanzamiento,CantidadCanciones,UrlImagenTapa,Estilo,TipoEdicion)VALUES(@titulo,@fecha,@cantidad,@imagen,@estilo,@tapa)");
-                datos.SetearParametro("@titulo",dato.titulo);
-                datos.SetearParametro("@fecha",dato.FechaLanzamiento);
-                datos.SetearParametro("@cantidad",dato.CantidadCanciones);
-                datos.SetearParametro("@imagen",dato.UrlImagenTapa);
-                datos.SetearParametro("@estilo",dato);
-                datos.SetearParametro("",dato);
+                datos.SetearConsulta("Insert into Discos(titulo,FechaLanzamiento,CantidadCanciones,UrlImagenTapa,IdEstilo,IdTipoEdicion)VALUES(@titulo,@fecha,@cantidad,@imagen,@estilo,@tapa)");
+                datos.SetearParametro("@titulo",nuevo.titulo);
+                datos.SetearParametro("@fecha",nuevo.FechaLanzamiento);
+                datos.SetearParametro("@cantidad",nuevo.CantidadCanciones);
+                datos.SetearParametro("@imagen",nuevo.UrlImagenTapa);
+                datos.SetearParametro("@estilo",nuevo.Estilo.Id);
+                datos.SetearParametro("@tapa",nuevo.TiposEdicion.Id);
 
+                datos.EjecutarAccion();
 
             }
             catch (Exception ex)
