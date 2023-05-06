@@ -36,8 +36,8 @@ namespace DiscosDb
 
                 listaDiscos = metodo.listar();
                 dgvDiscos.DataSource = listaDiscos;
-                ocultarColumnas();
                 CargarImagen(listaDiscos[0].UrlImagenTapa);
+                ocultarColumnas();
             }
             catch (Exception ex)
             {
@@ -85,5 +85,16 @@ namespace DiscosDb
             alta.ShowDialog();
             Cargar();
         }
+
+        private void btnModificar_Click(object sender, EventArgs e)
+        {
+            Discos seleccionado;
+            seleccionado = (Discos)dgvDiscos.CurrentRow.DataBoundItem;
+           FrmAltaDiscos  modificar = new FrmAltaDiscos(seleccionado);
+            modificar.ShowDialog();
+            Cargar();
+        }
+
+     
     }
 }

@@ -58,7 +58,7 @@
             // picImg
             // 
             this.picImg.BackColor = System.Drawing.Color.AliceBlue;
-            this.picImg.Location = new System.Drawing.Point(464, 26);
+            this.picImg.Location = new System.Drawing.Point(464, 42);
             this.picImg.Name = "picImg";
             this.picImg.Size = new System.Drawing.Size(302, 292);
             this.picImg.TabIndex = 1;
@@ -131,7 +131,7 @@
             // 
             // btnAgregar
             // 
-            this.btnAgregar.Location = new System.Drawing.Point(363, 348);
+            this.btnAgregar.Location = new System.Drawing.Point(253, 376);
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.Size = new System.Drawing.Size(84, 27);
             this.btnAgregar.TabIndex = 6;
@@ -141,7 +141,7 @@
             // 
             // BtnReset
             // 
-            this.BtnReset.Location = new System.Drawing.Point(191, 349);
+            this.BtnReset.Location = new System.Drawing.Point(117, 376);
             this.BtnReset.Name = "BtnReset";
             this.BtnReset.Size = new System.Drawing.Size(74, 26);
             this.BtnReset.TabIndex = 5;

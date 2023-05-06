@@ -8,13 +8,14 @@ namespace Dominio
 {
     public class Metodos
     {
+        AccesoDatos datos = new AccesoDatos();
         public List<Discos> listar()
         {
             List<Discos> lista = new List<Discos>();
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                datos.SetearConsulta("Select D.Titulo,D.FechaLanzamiento,D.CantidadCanciones,D.UrlImagenTapa,D.IdEstilo,D.IdTipoEdicion,D.Id,E.Descripcion Estilos ,T.Descripcion TiposEdicion From Discos D,Estilos E ,TiposEdicion T");
+                datos.SetearConsulta("Select  Titulo,FechaLanzamiento,CantidadCanciones,UrlImagenTapa,IdEstilo,IdTipoEdicion,D.Id,E.Descripcion Estilos ,T.Descripcion TiposEdicion From Discos D,Estilos E ,TiposEdicion T WHERE E.Id = D.IdEstilo And T.Id = D.IdTipoEdicion");
                 datos.GenerarLetura();
 
                 while (datos.Lector.Read())
@@ -59,7 +60,6 @@ namespace Dominio
 
         public void Nuevo(Discos nuevo)
         {
-            AccesoDatos datos = new AccesoDatos();
             try
             {
                 datos.SetearConsulta("Insert into Discos(titulo,FechaLanzamiento,CantidadCanciones,UrlImagenTapa,IdEstilo,IdTipoEdicion)VALUES(@titulo,@fecha,@cantidad,@imagen,@estilo,@tapa)");
@@ -77,6 +77,30 @@ namespace Dominio
             {
 
                 ex.ToString();
+            }
+        }
+        public void Modificar(Discos disco)
+        {
+            
+            try
+            {
+                datos.SetearConsulta("Update Discos set  titulo=@titulo,FechaLanzamiento =@fecha,CantidadCanciones=@canciones,UrlImagenTapa=@imagen,IdEstilo=@estilo,IdTipoEdicion=@tipo Where Id=@id ");
+                datos.SetearParametro("@titulo",disco.titulo);
+                datos.SetearParametro("@fecha",disco.FechaLanzamiento);
+                datos.SetearParametro("@canciones",disco.CantidadCanciones);
+                datos.SetearParametro("@imagen",disco.UrlImagenTapa);
+                datos.SetearParametro("@estilo",disco.Estilo.Id);
+                datos.SetearParametro("@tipo", disco.TiposEdicion.Id);
+                datos.SetearParametro("@Id", disco.Id);
+
+
+                datos.GenerarLetura();
+
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
             }
         }
 

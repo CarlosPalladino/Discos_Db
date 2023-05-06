@@ -14,12 +14,20 @@ namespace DiscosDb
 {
     public partial class FrmAltaDiscos : Form
     {
+        private Discos discos = null;
         public FrmAltaDiscos()
         {
             InitializeComponent();
         }
 
 
+        public FrmAltaDiscos(Discos disco)
+        {
+            InitializeComponent();
+            this.discos = disco;
+            Text = "modficacion";
+
+        }
 
         private void FrmAltaDiscos_Load(object sender, EventArgs e)
         {
@@ -30,14 +38,22 @@ namespace DiscosDb
             try
             {
                 cboEstilos.DataSource = met.listar();
+
                 cboEstilos.ValueMember = "Id";
                 cboEstilos.DisplayMember = "Descripcion";
 
                 cboTipoEdicion.DataSource = metodo.listar();
+
                 cboTipoEdicion.ValueMember = "Id";
                 cboTipoEdicion.DisplayMember = "Descripcion";
 
+                if (discos != null)
+                {
+                    txtTitulo.Text = discos.titulo;
+                    txtCanciones.Text = discos.CantidadCanciones.ToString();
+                    CargarImagen(discos.UrlImagenTapa);
 
+                }
 
             }
             catch (Exception ex)
@@ -53,18 +69,37 @@ namespace DiscosDb
         private void btnAgregar_Click(object sender, EventArgs e)
         {
             Metodos metodos = new Metodos();
-            Discos disco = new Discos();
+
             try
             {
-                disco.titulo = txtTitulo.Text;
-                disco.CantidadCanciones = int.Parse(txtCanciones.Text);
-                disco.FechaLanzamiento = DateTime.Parse(dataFecha.Value.ToString());
-                disco.UrlImagenTapa = txtImagen.Text;
-                disco.Estilo = (Estilos)cboEstilos.SelectedItem;
-                disco.TiposEdicion = (TiposEdicion)cboTipoEdicion.SelectedItem;
+                if (discos == null)
+                    discos = new Discos();
 
-                metodos.Nuevo(disco);
-                MessageBox.Show("Agregado Existosamente");
+                discos.titulo = txtTitulo.Text;
+                discos.CantidadCanciones = int.Parse(txtCanciones.Text);
+                discos.FechaLanzamiento = DateTime.Parse(dataFecha.Value.ToString());
+                discos.UrlImagenTapa = txtImagen.Text;
+
+                discos.Estilo = (Estilos)cboEstilos.SelectedItem;
+                discos.TiposEdicion = (TiposEdicion)cboTipoEdicion.SelectedItem;
+                if (discos.Id != 0)
+                {
+
+                    metodos.Modificar(discos);
+                    MessageBox.Show("Modificado exitosamente");
+                    Close();
+
+
+
+                }
+                else
+                {
+                    metodos.Nuevo(discos);
+                    MessageBox.Show("Agregado Existosamente");
+                    Close();
+
+                }
+
             }
             catch (Exception ex)
             {
