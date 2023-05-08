@@ -15,7 +15,7 @@ namespace Dominio
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                datos.SetearConsulta("Select  Titulo,FechaLanzamiento,CantidadCanciones,UrlImagenTapa,IdEstilo,IdTipoEdicion,D.Id,E.Descripcion Estilos ,T.Descripcion TiposEdicion From Discos D,Estilos E ,TiposEdicion T WHERE E.Id = D.IdEstilo And T.Id = D.IdTipoEdicion");
+                datos.SetearConsulta("Select  Titulo,FechaLanzamiento,CantidadCanciones,UrlImagenTapa,D.IdEstilo,D.IdTipoEdicion,D.Id,E.Descripcion Estilos,T.Descripcion TiposEdicion From Discos D,Estilos E ,TiposEdicion T WHERE E.Id = D.IdEstilo And T.Id = D.IdTipoEdicion");
                 datos.GenerarLetura();
 
                 while (datos.Lector.Read())
@@ -63,12 +63,12 @@ namespace Dominio
             try
             {
                 datos.SetearConsulta("Insert into Discos(titulo,FechaLanzamiento,CantidadCanciones,UrlImagenTapa,IdEstilo,IdTipoEdicion)VALUES(@titulo,@fecha,@cantidad,@imagen,@estilo,@tapa)");
-                datos.SetearParametro("@titulo",nuevo.titulo);
-                datos.SetearParametro("@fecha",nuevo.FechaLanzamiento);
-                datos.SetearParametro("@cantidad",nuevo.CantidadCanciones);
-                datos.SetearParametro("@imagen",nuevo.UrlImagenTapa);
-                datos.SetearParametro("@estilo",nuevo.Estilo.Id);
-                datos.SetearParametro("@tapa",nuevo.TiposEdicion.Id);
+                datos.SetearParametro("@titulo", nuevo.titulo);
+                datos.SetearParametro("@fecha", nuevo.FechaLanzamiento);
+                datos.SetearParametro("@cantidad", nuevo.CantidadCanciones);
+                datos.SetearParametro("@imagen", nuevo.UrlImagenTapa);
+                datos.SetearParametro("@estilo", nuevo.Estilo.Id);
+                datos.SetearParametro("@tapa", nuevo.TiposEdicion.Id);
 
                 datos.EjecutarAccion();
 
@@ -81,15 +81,15 @@ namespace Dominio
         }
         public void Modificar(Discos disco)
         {
-            
+
             try
             {
                 datos.SetearConsulta("Update Discos set  titulo=@titulo,FechaLanzamiento =@fecha,CantidadCanciones=@canciones,UrlImagenTapa=@imagen,IdEstilo=@estilo,IdTipoEdicion=@tipo Where Id=@id ");
-                datos.SetearParametro("@titulo",disco.titulo);
-                datos.SetearParametro("@fecha",disco.FechaLanzamiento);
-                datos.SetearParametro("@canciones",disco.CantidadCanciones);
-                datos.SetearParametro("@imagen",disco.UrlImagenTapa);
-                datos.SetearParametro("@estilo",disco.Estilo.Id);
+                datos.SetearParametro("@titulo", disco.titulo);
+                datos.SetearParametro("@fecha", disco.FechaLanzamiento);
+                datos.SetearParametro("@canciones", disco.CantidadCanciones);
+                datos.SetearParametro("@imagen", disco.UrlImagenTapa);
+                datos.SetearParametro("@estilo", disco.Estilo.Id);
                 datos.SetearParametro("@tipo", disco.TiposEdicion.Id);
                 datos.SetearParametro("@Id", disco.Id);
 
@@ -102,8 +102,33 @@ namespace Dominio
 
                 throw ex;
             }
-        }
 
+
+
+
+
+
+
+
+
+        }
+        public void Eliminar(int Id)
+        {
+
+
+            try
+            {
+                datos.SetearConsulta("Delete from Discos Where Id =@id");
+                datos.SetearParametro("@id",Id);
+                datos.GenerarLetura();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
+        }
 
 
 

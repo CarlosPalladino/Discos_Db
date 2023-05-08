@@ -95,6 +95,25 @@ namespace DiscosDb
             Cargar();
         }
 
-     
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+           Metodos metodos = new Metodos(); 
+            Discos seleccionado;
+            try
+            {
+                DialogResult resultado =MessageBox.Show("¿estas seguro que lo borras ?","eliminado !",MessageBoxButtons.YesNo,MessageBoxIcon.Warning);
+                if(resultado == DialogResult.Yes)
+                {
+                    seleccionado = (Discos)dgvDiscos.CurrentRow.DataBoundItem;
+                    metodos.Eliminar(seleccionado.Id);
+                    Cargar();
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
     }
 }
