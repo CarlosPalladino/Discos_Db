@@ -119,7 +119,7 @@ namespace Dominio
             try
             {
                 datos.SetearConsulta("Delete from Discos Where Id =@id");
-                datos.SetearParametro("@id",Id);
+                datos.SetearParametro("@id", Id);
                 datos.GenerarLetura();
             }
             catch (Exception)
@@ -130,7 +130,64 @@ namespace Dominio
 
         }
 
+        public void filtrar(string campo, string criterio, string filtro)
+        {
+            try
+            {
+                string consulta = "Select  Titulo,FechaLanzamiento,CantidadCanciones,UrlImagenTapa,D.IdEstilo,D.IdTipoEdicion,D.Id,E.Descripcion Estilos,T.Descripcion TiposEdicion From Discos D,Estilos E ,TiposEdicion T WHERE E.Id = D.IdEstilo And T.Id = D.IdTipoEdicion and ";
+                if (campo == "Estilo")
+                {
+                    switch (criterio)
+                    {
+                        case "Rock":
+                            consulta += " Estilo  '%" + filtro + "+' ";
+                            break;
+                        case "Pop":
+                            consulta += "Estilo  '%" + filtro + " +' ";
+                            break;
+                        default:
+                            consulta += " Estilo   '%" + filtro + " + '";
+                            break;
 
+
+                    }
+                }
+                else if (campo == "Tapa")
+                {
+                    switch (campo == "TipoEdicion")
+                    {
+
+                    }
+                }
+                else
+                {
+                    switch (campo == "CantitdadCanciones")
+                    {
+
+                    }
+
+                }
+
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
+
+            try
+            {
+
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
 
     }
 }

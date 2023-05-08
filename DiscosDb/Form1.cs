@@ -24,6 +24,15 @@ namespace DiscosDb
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            cboCampo.Items.Add("Tapa");
+            cboCampo.Items.Add("Disco");
+            cboCampo.Items.Add("Nombre");
+
+            cboCriterio.Items.Add("Criterio");
+
+
+
+
             Cargar();
         }
 
