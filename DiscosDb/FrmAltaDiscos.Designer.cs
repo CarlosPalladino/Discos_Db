@@ -43,6 +43,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.cboEstilos = new System.Windows.Forms.ComboBox();
             this.cboTipoEdicion = new System.Windows.Forms.ComboBox();
+            this.txtEstilo = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.picImg)).BeginInit();
             this.SuspendLayout();
             // 
@@ -107,7 +108,7 @@
             // lblEstilo
             // 
             this.lblEstilo.AutoSize = true;
-            this.lblEstilo.Location = new System.Drawing.Point(218, 81);
+            this.lblEstilo.Location = new System.Drawing.Point(250, 85);
             this.lblEstilo.Name = "lblEstilo";
             this.lblEstilo.Size = new System.Drawing.Size(32, 13);
             this.lblEstilo.TabIndex = 7;
@@ -159,19 +160,28 @@
             // 
             // cboEstilos
             // 
+            this.cboEstilos.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboEstilos.FormattingEnabled = true;
-            this.cboEstilos.Location = new System.Drawing.Point(313, 73);
+            this.cboEstilos.Location = new System.Drawing.Point(313, 96);
             this.cboEstilos.Name = "cboEstilos";
-            this.cboEstilos.Size = new System.Drawing.Size(92, 21);
+            this.cboEstilos.Size = new System.Drawing.Size(89, 21);
             this.cboEstilos.TabIndex = 12;
             // 
             // cboTipoEdicion
             // 
+            this.cboTipoEdicion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboTipoEdicion.FormattingEnabled = true;
             this.cboTipoEdicion.Location = new System.Drawing.Point(313, 142);
             this.cboTipoEdicion.Name = "cboTipoEdicion";
             this.cboTipoEdicion.Size = new System.Drawing.Size(92, 21);
             this.cboTipoEdicion.TabIndex = 13;
+            // 
+            // txtEstilo
+            // 
+            this.txtEstilo.Location = new System.Drawing.Point(313, 70);
+            this.txtEstilo.Name = "txtEstilo";
+            this.txtEstilo.Size = new System.Drawing.Size(89, 20);
+            this.txtEstilo.TabIndex = 14;
             // 
             // FrmAltaDiscos
             // 
@@ -180,6 +190,7 @@
             this.BackColor = System.Drawing.SystemColors.WindowFrame;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.txtEstilo);
             this.Controls.Add(this.cboTipoEdicion);
             this.Controls.Add(this.cboEstilos);
             this.Controls.Add(this.label1);
@@ -221,5 +232,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox cboEstilos;
         private System.Windows.Forms.ComboBox cboTipoEdicion;
+        private System.Windows.Forms.TextBox txtEstilo;
     }
 }

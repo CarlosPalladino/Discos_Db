@@ -100,6 +100,7 @@
             this.cboCampo.Name = "cboCampo";
             this.cboCampo.Size = new System.Drawing.Size(88, 21);
             this.cboCampo.TabIndex = 5;
+            this.cboCampo.SelectedIndexChanged += new System.EventHandler(this.cboCampo_SelectedIndexChanged);
             // 
             // cboCriterio
             // 
@@ -125,6 +126,7 @@
             this.btnBuscar.TabIndex = 8;
             this.btnBuscar.Text = "Buscar";
             this.btnBuscar.UseVisualStyleBackColor = true;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
             // Form1
             // 

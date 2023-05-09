@@ -81,6 +81,7 @@ namespace DiscosDb
                 discos.UrlImagenTapa = txtImagen.Text;
 
                 discos.Estilo = (Estilos)cboEstilos.SelectedItem;
+
                 discos.TiposEdicion = (TiposEdicion)cboTipoEdicion.SelectedItem;
                 if (discos.Id != 0)
                 {

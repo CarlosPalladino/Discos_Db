@@ -140,52 +140,59 @@ namespace Dominio
                     switch (criterio)
                     {
                         case "Rock":
-                            consulta += " Estilo  '%" + filtro + "+' ";
+                            consulta += " E.Descripcion like 'Rock'";
                             break;
                         case "Pop":
-                            consulta += "Estilo  '%" + filtro + " +' ";
+                            consulta += "E.Descripcion  like'Pop' ";
                             break;
                         default:
-                            consulta += " Estilo   '%" + filtro + " + '";
+                            consulta += " E.Descripcion  like 'Pop Punk' ";
                             break;
 
 
                     }
                 }
-                else if (campo == "Tapa")
+                else if (campo == "TiposEdicion")
                 {
-                    switch (campo == "TipoEdicion")
+                    switch (criterio)
                     {
+                        case "Vinillo ":
+                            consulta += " T.Descripcion like 'Vinillo'";
+                            break;
+                        case "Cd":
+                            consulta += "T.Descripcion  like 'Cd'";
+                            break;
+                        default:
+                            consulta += " T.Descripcion  like 'Tape' ";
+                            break;
+
 
                     }
                 }
                 else
                 {
-                    switch (campo == "CantitdadCanciones")
-                    {
 
+                    switch (criterio)
+                    {
+                        case "Mayor a":
+                            consulta += "CantidadCanciones > " + filtro;
+                            break;
+                        case "Menor a":
+                            consulta += " CantidadCanciones< " + filtro;
+                            break;
+                        default:
+                            consulta += " CantidadCanciones= " + filtro;
+                            break;
                     }
 
                 }
 
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
-                throw;
-            }
-
-
-            try
-            {
-
-
-            }
-            catch (Exception)
-            {
-
-                throw;
+                throw ex;
             }
         }
 

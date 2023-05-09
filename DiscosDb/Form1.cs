@@ -24,11 +24,11 @@ namespace DiscosDb
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            cboCampo.Items.Add("Tapa");
             cboCampo.Items.Add("Disco");
-            cboCampo.Items.Add("Nombre");
+            cboCampo.Items.Add("CantidadCanciones");
+            cboCampo.Items.Add("TiposEdicion");
 
-            cboCriterio.Items.Add("Criterio");
+
 
 
 
@@ -123,6 +123,42 @@ namespace DiscosDb
 
                 throw ex;
             }
+        }
+
+        private void cboCampo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string opcion = cboCampo.SelectedItem.ToString();
+            
+            if(opcion == "TiposEdicion")
+            {
+                cboCriterio.Items.Clear();
+                cboCriterio.Items.Add("Vinillo");
+                cboCriterio.Items.Add("Cd");
+                cboCriterio.Items.Add("Ta");
+
+
+            }
+            else  if(opcion == "CantidadCanciones")
+            {
+                cboCriterio.Items.Clear();
+                cboCriterio.Items.Add("Mayor a");
+                cboCriterio.Items.Add("Menor a");
+                cboCriterio.Items.Add("Igual a");
+            }
+            else
+            {
+                cboCriterio.Items.Clear();
+                cboCriterio.Items.Add("Pop");
+                cboCriterio.Items.Add("Pop Punk");
+                cboCriterio.Items.Add("Rock");
+
+            }
+
+        }
+
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
