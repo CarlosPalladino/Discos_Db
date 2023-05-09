@@ -24,9 +24,8 @@ namespace DiscosDb
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            cboCampo.Items.Add("Disco");
             cboCampo.Items.Add("CantidadCanciones");
-            cboCampo.Items.Add("TiposEdicion");
+            cboCampo.Items.Add("Titulo");
 
 
 
@@ -61,7 +60,7 @@ namespace DiscosDb
             dgvDiscos.Columns["UrlImagenTapa"].Visible = false;
             dgvDiscos.Columns["IdEstilo"].Visible = false;
             dgvDiscos.Columns["IdTipoEdicion"].Visible = false;
-             
+
 
         }
 
@@ -90,7 +89,7 @@ namespace DiscosDb
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-           FrmAltaDiscos alta = new FrmAltaDiscos();
+            FrmAltaDiscos alta = new FrmAltaDiscos();
             alta.ShowDialog();
             Cargar();
         }
@@ -99,19 +98,19 @@ namespace DiscosDb
         {
             Discos seleccionado;
             seleccionado = (Discos)dgvDiscos.CurrentRow.DataBoundItem;
-           FrmAltaDiscos  modificar = new FrmAltaDiscos(seleccionado);
+            FrmAltaDiscos modificar = new FrmAltaDiscos(seleccionado);
             modificar.ShowDialog();
             Cargar();
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
-           Metodos metodos = new Metodos(); 
+            Metodos metodos = new Metodos();
             Discos seleccionado;
             try
             {
-                DialogResult resultado =MessageBox.Show("¿estas seguro que lo borras ?","eliminado !",MessageBoxButtons.YesNo,MessageBoxIcon.Warning);
-                if(resultado == DialogResult.Yes)
+                DialogResult resultado = MessageBox.Show("¿estas seguro que lo borras ?", "eliminado !", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (resultado == DialogResult.Yes)
                 {
                     seleccionado = (Discos)dgvDiscos.CurrentRow.DataBoundItem;
                     metodos.Eliminar(seleccionado.Id);
@@ -128,17 +127,17 @@ namespace DiscosDb
         private void cboCampo_SelectedIndexChanged(object sender, EventArgs e)
         {
             string opcion = cboCampo.SelectedItem.ToString();
-            
-            if(opcion == "TiposEdicion")
+
+            if (opcion == "TiposEdicion")
             {
                 cboCriterio.Items.Clear();
-                cboCriterio.Items.Add("Vinillo");
-                cboCriterio.Items.Add("Cd");
-                cboCriterio.Items.Add("Ta");
+                cboCriterio.Items.Add("Comienza con");
+                cboCriterio.Items.Add("Termina con");
+                cboCriterio.Items.Add("Igual a");
 
 
             }
-            else  if(opcion == "CantidadCanciones")
+            else if (opcion == "CantidadCanciones")
             {
                 cboCriterio.Items.Clear();
                 cboCriterio.Items.Add("Mayor a");
@@ -148,9 +147,9 @@ namespace DiscosDb
             else
             {
                 cboCriterio.Items.Clear();
-                cboCriterio.Items.Add("Pop");
-                cboCriterio.Items.Add("Pop Punk");
-                cboCriterio.Items.Add("Rock");
+                cboCriterio.Items.Add("Comienza con");
+                cboCriterio.Items.Add("Termina con");
+                cboCriterio.Items.Add("Igual a");
 
             }
 
@@ -158,6 +157,48 @@ namespace DiscosDb
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
+
+            Metodos metodo = new Metodos();
+
+            try
+            {
+
+                if (validarFiltro())
+                    return;
+                string campo = cboCampo.SelectedItem.ToString();
+                string criterio = cboCriterio.SelectedItem.ToString();
+                string filtro = txtFiltroAvanzando.Text;
+
+                dgvDiscos.DataSource = metodo.filtrar(campo, criterio, filtro);
+
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+
+        private bool validarFiltro()
+        {
+            if (cboCampo.SelectedIndex < 0)
+            {
+                MessageBox.Show(" ¡ Seleccionado un Campo por favor !");
+            }
+            if (cboCriterio.SelectedIndex < 0)
+            {
+                MessageBox.Show(" ¡ Seleccionado un Criterio, por favor !");
+                return true;
+            }
+            if (cboCampo.SelectedItem.ToString() == "CantidadCanciones") // aca problema
+                if (string.IsNullOrEmpty(txtFiltroAvanzando.Text))
+                {
+                    MessageBox.Show("Selecciona una cantidad ");
+                    return true;
+                }
+            return false;
+
+
 
         }
     }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -130,45 +131,31 @@ namespace Dominio
 
         }
 
-        public void filtrar(string campo, string criterio, string filtro)
+        public List<Discos> filtrar(string campo, string criterio, string filtro)
         {
+            List<Discos> discos = new List<Discos>();
+
             try
             {
                 string consulta = "Select  Titulo,FechaLanzamiento,CantidadCanciones,UrlImagenTapa,D.IdEstilo,D.IdTipoEdicion,D.Id,E.Descripcion Estilos,T.Descripcion TiposEdicion From Discos D,Estilos E ,TiposEdicion T WHERE E.Id = D.IdEstilo And T.Id = D.IdTipoEdicion and ";
-                if (campo == "Estilo")
+                if (campo == "Titulo")
                 {
                     switch (criterio)
                     {
-                        case "Rock":
-                            consulta += " E.Descripcion like 'Rock'";
+                        case "Comienza con . .":
+                            consulta += " Titulo like '" + filtro + "%' ";
                             break;
-                        case "Pop":
-                            consulta += "E.Descripcion  like'Pop' ";
+                        case "Termina con . .":
+                            consulta += "Titulo  like  '%" + filtro + "' ";
                             break;
                         default:
-                            consulta += " E.Descripcion  like 'Pop Punk' ";
+                            consulta += " Titulo  like  '%" + filtro + "%'";
                             break;
 
 
                     }
                 }
-                else if (campo == "TiposEdicion")
-                {
-                    switch (criterio)
-                    {
-                        case "Vinillo ":
-                            consulta += " T.Descripcion like 'Vinillo'";
-                            break;
-                        case "Cd":
-                            consulta += "T.Descripcion  like 'Cd'";
-                            break;
-                        default:
-                            consulta += " T.Descripcion  like 'Tape' ";
-                            break;
 
-
-                    }
-                }
                 else
                 {
 
@@ -178,15 +165,41 @@ namespace Dominio
                             consulta += "CantidadCanciones > " + filtro;
                             break;
                         case "Menor a":
-                            consulta += " CantidadCanciones< " + filtro;
+                            consulta += " CantidadCanciones < " + filtro;
                             break;
                         default:
-                            consulta += " CantidadCanciones= " + filtro;
+                            consulta += " CantidadCanciones = " + filtro;
                             break;
                     }
 
                 }
+                datos.SetearConsulta(consulta);
+                datos.GenerarLetura();
 
+                while (datos.Lector.Read())
+
+                {
+                    Discos aux = new Discos();
+
+                    aux.Id = (int)datos.Lector["id"];
+                    aux.titulo = (string)datos.Lector["titulo"];
+                    aux.FechaLanzamiento = (DateTime)datos.Lector["fechaLanzamiento"];
+                    aux.CantidadCanciones = (int)datos.Lector["CantidadCanciones"];
+                    aux.UrlImagenTapa = (string)datos.Lector["urlImagenTapa"];
+                    aux.IdEstilo = (int)datos.Lector["IdEstilo"];
+                    aux.IdTipoEdicion = (int)datos.Lector["IdTipoEdicion"];
+
+                    aux.Estilo = new Estilos();
+                    aux.Estilo.Id = (int)datos.Lector["Id"];
+                    aux.Estilo.Descripcion = (string)datos.Lector["Estilos"];
+
+                    aux.TiposEdicion = new TiposEdicion();
+                    aux.TiposEdicion.Id = (int)datos.Lector["Id"];
+                    aux.TiposEdicion.Descripcion = (string)datos.Lector["TiposEdicion"];
+
+                    discos.Add(aux);
+                }
+                return discos;
 
             }
             catch (Exception ex)
